@@ -175,6 +175,7 @@ def install_from_url(
         if pkg in installed_names:
             required_packages.remove(pkg)
 
+    required_packages.append("ipython=7")
     if required_packages:
         _run_subprocess(
             [f"{prefix}/bin/{conda_exe}", "install", "-yq", *required_packages],
