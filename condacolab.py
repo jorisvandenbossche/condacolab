@@ -83,6 +83,7 @@ def _run_subprocess(command, logs_filename):
     os.makedirs(logs_file_path, exist_ok=True)
 
     with open(f"{logs_file_path}/{logs_filename}", "w") as f:
+        print(task.stdout)
         f.write(task.stdout)
     assert (task.returncode == 0), f"💥💔💥 The installation failed! Logs are available at `{logs_file_path}/{logs_filename}`."
 
