@@ -187,7 +187,16 @@ def install_from_url(
     #pip_task = _run_subprocess(
     #    [f"{prefix}/bin/python", "-m", "pip", "-q", "install", "-U", "https://github.com/googlecolab/colabtools/archive/refs/heads/main.zip", "condacolab"],
     #    "pip_task.log"
-    #    )
+    #    
+    
+    _run_subprocess(
+        ["cp", "-r", f"{prefix}/lib/python3.10/site-packages/traitlets", f"{prefix}/lib/python3.10/site-packages/IPython/utils"],
+        "traitlets_patch.log",
+    )
+    _run_subprocess(
+        ["mv", f"{prefix}/lib/python3.10/site-packages/IPython/utils/traitlets.py", f"{prefix}/lib/python3.10/site-packages/IPython/utils/traitlets.py.bkup"],
+        "traitlets_patch2.log",
+    )
 
     _run_subprocess(
         [f"{prefix}/bin/conda", "list"],
