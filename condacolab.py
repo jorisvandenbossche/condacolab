@@ -168,13 +168,13 @@ def install_from_url(
 
     # check if any of those packages are already installed. If it is installed, remove it from the list of required packages.
 
-    output = check_output([f"{prefix}/bin/conda", "list", "--json"])
-    payload = json.loads(output)
-    installed_names = [pkg["name"] for pkg in payload] 
+    #output = check_output([f"{prefix}/bin/conda", "list", "--json"])
+    #payload = json.loads(output)
+    #installed_names = [pkg["name"] for pkg in payload] 
     required_packages = ["matplotlib-base", "psutil", "google-colab"]
-    for pkg in required_packages.copy():
-        if pkg in installed_names:
-            required_packages.remove(pkg)
+    #for pkg in required_packages.copy():
+    #    if pkg in installed_names:
+    #        required_packages.remove(pkg)
 
     required_packages.append("ipython=7")
     if required_packages:
@@ -183,10 +183,10 @@ def install_from_url(
             "conda_task.log",
         )
 
-    pip_task = _run_subprocess(
-        [f"{prefix}/bin/python", "-m", "pip", "-q", "install", "-U", "https://github.com/googlecolab/colabtools/archive/refs/heads/main.zip", "condacolab"],
-        "pip_task.log"
-        )
+    #pip_task = _run_subprocess(
+    #    [f"{prefix}/bin/python", "-m", "pip", "-q", "install", "-U", "https://github.com/googlecolab/colabtools/archive/refs/heads/main.zip", "condacolab"],
+    #    "pip_task.log"
+    #    )
 
     env = env or {}
     bin_path = f"{prefix}/bin"
