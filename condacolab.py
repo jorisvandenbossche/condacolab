@@ -183,11 +183,17 @@ def install_from_url(
             "conda_task.log",
         )
 
+    
     #pip_task = _run_subprocess(
     #    [f"{prefix}/bin/python", "-m", "pip", "-q", "install", "-U", "https://github.com/googlecolab/colabtools/archive/refs/heads/main.zip", "condacolab"],
     #    "pip_task.log"
     #    )
 
+    _run_subprocess(
+        [f"{prefix}/bin/conda", "list"],
+        "conda_list.log",
+    )
+    
     env = env or {}
     bin_path = f"{prefix}/bin"
 
